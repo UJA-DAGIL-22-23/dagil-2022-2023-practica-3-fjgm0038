@@ -442,8 +442,7 @@ Además, incluye documentación sobre dicho código y un vídeo descriptivo de c
 Tablero Trello: https://trello.com/b/19gtZmF1
 
 ### Capturas Fauna
-<img src='/capturas/faunaHome.png' width='200px'/>  
 
-<img src='/capturas/faunaColeccion.png' width='200px'/>  
-
-<img src='/capturas/faunaBalonmano.png' width='200px'/>
+![Captura Home Fauna](./assets/img/faunaHome.png)
+![Captura Coleccion Fauna](./assets/img/faunaColeccion.png)
+![Captura Balonmano Fauna](./assets/img/faunaColeccion.png)
