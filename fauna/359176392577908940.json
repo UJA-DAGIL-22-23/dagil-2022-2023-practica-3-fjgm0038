@@ -1,0 +1,13 @@
+{
+  playerId: 8,
+  name: "Cronk",
+  surname: "von Kessel",
+  dateBirth: {
+    day: 24,
+    month: 12,
+    year: 1998
+  },
+  seasonsPlayed: [2015, 2016, 2017],
+  goalSeason: [1, 0, 0],
+  disqualified: true
+}

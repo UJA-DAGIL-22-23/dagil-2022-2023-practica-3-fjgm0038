@@ -1,0 +1,13 @@
+{
+  playerId: 6,
+  name: "Shaloth",
+  surname: "Goldark",
+  dateBirth: {
+    day: 13,
+    month: 11,
+    year: 2002
+  },
+  seasonsPlayed: [2020, 2021, 2022, 2023],
+  goalSeason: [3, 2, 1, 5],
+  disqualified: false
+}

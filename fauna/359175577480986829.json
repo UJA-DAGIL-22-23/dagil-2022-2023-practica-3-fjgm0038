@@ -1,0 +1,13 @@
+{
+  playerId: 3,
+  name: "Goroki",
+  surname: "Leupar",
+  dateBirth: {
+    day: 15,
+    month: 3,
+    year: 1997
+  },
+  seasonsPlayed: [2021, 2022],
+  goalSeason: [3, 8],
+  disqualified: false
+}

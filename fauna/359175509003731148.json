@@ -1,0 +1,13 @@
+{
+  playerId: 2,
+  name: "Eshair",
+  surname: "Talqamar",
+  dateBirth: {
+    day: 31,
+    month: 3,
+    year: 2001
+  },
+  seasonsPlayed: [2021, 2022, 2023],
+  goalSeason: [1, 7, 11],
+  disqualified: true
+}

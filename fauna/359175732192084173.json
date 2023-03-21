@@ -1,0 +1,13 @@
+{
+  playerId: 4,
+  name: "Desmond",
+  surname: "Verelli",
+  dateBirth: {
+    day: 28,
+    month: 11,
+    year: 2000
+  },
+  seasonsPlayed: [2021, 2022, 2023],
+  goalSeason: [3, 0, 12],
+  disqualified: true
+}

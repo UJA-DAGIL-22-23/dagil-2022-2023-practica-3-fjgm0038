@@ -440,3 +440,10 @@ Además, incluye documentación sobre dicho código y un vídeo descriptivo de c
 ## Resultados
 
 Tablero Trello: https://trello.com/b/19gtZmF1
+
+### Capturas Fauna
+<img src='/capturas/faunaHome.png' width='200px'/>  
+
+<img src='/capturas/faunaColeccion.png' width='200px'/>  
+
+<img src='/capturas/faunaBalonmano.png' width='200px'/>

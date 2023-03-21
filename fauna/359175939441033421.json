@@ -1,0 +1,13 @@
+{
+  playerId: 5,
+  name: "Ax",
+  surname: "El",
+  dateBirth: {
+    day: 3,
+    month: 8,
+    year: 1999
+  },
+  seasonsPlayed: [2018, 2019, 2020, 2021, 2022, 2023],
+  goalSeason: [1, 2, 3, 4, 5, 6],
+  disqualified: false
+}

@@ -1,0 +1,13 @@
+{
+  playerId: 7,
+  name: "Sobunar",
+  surname: "D. Profundidadgris",
+  dateBirth: {
+    day: 1,
+    month: 7,
+    year: 2002
+  },
+  seasonsPlayed: [2022, 2023],
+  goalSeason: [6, 9],
+  disqualified: false
+}

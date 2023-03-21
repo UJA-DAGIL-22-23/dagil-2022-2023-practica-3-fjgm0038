@@ -1,0 +1,13 @@
+{
+  playerId: 10,
+  name: "Cairbre",
+  surname: "Larnaz",
+  dateBirth: {
+    day: 26,
+    month: 8,
+    year: 2004
+  },
+  seasonsPlayed: [2020, 2021, 2022],
+  goalSeason: [1, 3, 4],
+  disqualified: false
+}
