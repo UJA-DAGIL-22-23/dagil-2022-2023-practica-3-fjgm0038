@@ -39,7 +39,9 @@ describe('Servidor PLANTILLA:', () => {
           //console.log( "BODY ACERCA DE ", res.body ); // Para comprobar qué contiene exactamente res.body
           assert(res.body.hasOwnProperty('mensaje'));
           assert(res.body.mensaje === "Microservicio MS Plantilla: acerca de");
-
+          assert(res.body.autor == "Francisco Javier Galvez Marin");
+          assert(res.body.email == "fjgm0038@red.ujaen.es");
+          assert(res.body.fecha == "28-03-2023");
         })
         .end((error) => { error ? done.fail(error) : done() })
     });
