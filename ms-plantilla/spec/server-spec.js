@@ -51,7 +51,7 @@ describe('Servidor PLANTILLA:', () => {
    * Tests para acceso a la BBDD
    */
   describe('Acceso a BBDD:', () => {
-    it('Devuelve ¿¿¿ VALOR ESPERADO ??? al consultar mediante test_db', (done) => {
+    it('Devuelve Arno al consultar mediante test_db', (done) => {
       supertest(app)
         .get('/test_db')
         .expect(200)
