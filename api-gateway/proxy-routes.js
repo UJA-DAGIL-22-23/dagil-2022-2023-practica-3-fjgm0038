@@ -8,15 +8,16 @@
 
 const ROUTES = [
     {
-        url: '/plantilla',
+        url: '/balonmano',
         proxy: {
             target: "http://localhost:8002",
             changeOrigin: true,
             pathRewrite: {
-                [`^/plantilla`]: '',
+                [`^/balonmano`]: '',
             },
         }
     }
+
 ]
 
 exports.routes = ROUTES;
