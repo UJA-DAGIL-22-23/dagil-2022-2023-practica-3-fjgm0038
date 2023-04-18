@@ -15,7 +15,7 @@ const app = require('../server');
 /**
  * Test para las rutas "estáticas": / y /acerdade
  */
-describe('Servidor PLANTILLA:', () => {
+describe('Servidor Balonmano:', () => {
   describe('Rutas / y /acercade', () => {
     it('Devuelve MS Plantilla Home Page', (done) => {
       supertest(app)
@@ -66,6 +66,16 @@ describe('Servidor PLANTILLA:', () => {
         );
     });
 
+  })
+    
+  describe('Ruta /get_todos', () => {
+      supertest(app)
+          .get('/get_todos')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .expect(function (res) {
+              assert(res.body.data[0].data.hasOwnProperty('disqualified'));
+          })
   })
 });
 

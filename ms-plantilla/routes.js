@@ -47,5 +47,6 @@ router.get("/test_db", async (req, res) => {
 });
 
 
+
 // Exporto el módulo para poder usarlo en server
 module.exports = router;
