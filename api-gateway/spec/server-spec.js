@@ -80,6 +80,7 @@ describe('API Gateway: rutas estáticas', () => {
                     assert(res.body.data[0].data.hasOwnProperty('name'));
                     assert(res.body.data[0].data.name === "Arno");
                     assert(res.body.data[0].data.name != "Juande");
+                    assert(res.body.data.length === 10);
 
                 })
                 .end((error) => { error ? done.fail(error) : done(); }
