@@ -14,10 +14,10 @@ const faunadb = require('faunadb'),
     q = faunadb.query;
 
 const client = new faunadb.Client({
-    secret: '¿¿¿ CLAVE SECRETA EN FAUNA PARA ESTA BBDD???',
+    secret: 'fnAFAIqfEHAAzP7H8IqVxp3j18HiyZTYfYhyMR9k',
 });
 
-const COLLECTION = "¿¿¿ COLECCION ???"
+const COLLECTION = "Balonmano"
 
 // CALLBACKS DEL MODELO
 
@@ -93,10 +93,32 @@ const CB_OTHERS = {
         try {
             CORS(res).status(200).json({
                 mensaje: "Microservicio MS Plantilla: acerca de",
-                autor: "¿¿¿ AUTOR ???",
-                email: "¿¿¿ EMAIL ???",
-                fecha: "¿¿¿ FECHA ???"
+                autor: "Francisco Javier Galvez Marin",
+                email: "fjgm0038@red.ujaen.es",
+                fecha: "28-03-2023"
             });
+        } catch (error) {
+            CORS(res).status(500).json({ error: error.description })
+        }
+    },
+
+    /**
+     * Método para obtener todas los arqueros de la BBDD.
+     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL
+     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
+     */
+    get_lista_jugadores: async (req, res) => {
+        try {
+            let players = await client.query(
+                q.Map(
+                    q.Paginate(q.Documents(q.Collection(COLLECTION))),
+                    q.Lambda("X", q.Get(q.Var("X")))
+                )
+            )
+            // console.log( players ) // Para comprobar qué se ha devuelto en personas
+            CORS(res)
+                .status(200)
+                .json(players)
         } catch (error) {
             CORS(res).status(500).json({ error: error.description })
         }

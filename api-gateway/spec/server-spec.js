@@ -35,11 +35,58 @@ describe('API Gateway: rutas estáticas', () => {
           //console.log( "BODY ACERCA DE ", res.body ); // Para comprobar qué contiene exactamente res.body
           assert(res.body.hasOwnProperty('mensaje'));
           assert(res.body.mensaje === "Microservicio MS Plantilla: acerca de");
+            assert(res.body.autor == "Francisco Javier Galvez Marin");
+            assert(res.body.email == "fjgm0038@red.ujaen.es");
+            assert(res.body.fecha == "28-03-2023");
 
         })
         .end((error) => { error ? done.fail(error) : done() })
     });
+
+
   })
+
+    /**
+     * Tests para acceso a la lista de nombres
+     */
+    describe('Acceso a BBDD:', () => {
+        it('Devuelve Arno al consultar mediante test_db', (done) => {
+            supertest(app)
+                .get('/plantilla/test_db')
+                .expect(200)
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    //console.log( res.body ); // Para comprobar qué contiene exactamente res.body
+                    assert(res.body.data[0].data.hasOwnProperty('disqualified'));
+                    assert(res.body.data[0].data.name === "Arno");
+
+                })
+                .end((error) => { error ? done.fail(error) : done(); }
+                );
+        });
+
+    })
+
+    /**
+     * Tests para acceso a la lista de los nombres de jugadores
+     */
+    describe('Acceso a la lista de nombres de los jugadores:', () => {
+        it('Devuelve Arno al consultar el primer miembro de la lista de jugadores', (done) => {
+            supertest(app)
+                .get('/plantilla/get_lista_jugadores')
+                .expect(200)
+                .expect('Content-Type', /json/)
+                .expect(function (res) {
+                    assert(res.body.data[0].data.hasOwnProperty('name'));
+                    assert(res.body.data[0].data.name === "Arno");
+                    assert(res.body.data[0].data.name != "Juande");
+
+                })
+                .end((error) => { error ? done.fail(error) : done(); }
+                );
+        });
+
+    })
 });
 
 

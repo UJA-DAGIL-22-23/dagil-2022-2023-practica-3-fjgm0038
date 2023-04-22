@@ -46,6 +46,16 @@ router.get("/test_db", async (req, res) => {
     }
 });
 
+/**
+ * Test de conexión a la BBDD
+ */
+router.get("/get_lista_jugadores", async (req, res) => {
+    try {
+        await callbacks.get_lista_jugadores(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 // Exporto el módulo para poder usarlo en server
 module.exports = router;
