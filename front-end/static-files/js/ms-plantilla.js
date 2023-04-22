@@ -234,12 +234,12 @@ Plantilla.plantillaTablaJugadores.actualizaTodo = function (player) {
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 
-Plantilla.recupera = async function (callBackFn) {
+Plantilla.recupera = async function (callBackFn, direccion) {
     let response = null
 
     // Intento conectar con el microservicio
     try {
-        const url = Frontend.API_GATEWAY + "/plantilla/get_lista_jugadores"
+        const url = Frontend.API_GATEWAY + direccion
         response = await fetch(url)
 
     } catch (error) {
@@ -281,14 +281,14 @@ Plantilla.muestraSoloNombres = function (vector) {
  * Función principal para recuperar solo los nombres de los jugadores de balonmano desde el MS, y posteriormente imprimirlos
  */
 Plantilla.procesarListaNombres = function () {
-    Plantilla.recupera(Plantilla.muestraSoloNombres);
+    Plantilla.recupera(Plantilla.muestraSoloNombres, "/plantilla/get_lista_jugadores");
 }
 
 /**
  * Función principal para recuperar todos los datos de los jugadores de balonmano desde el MS, y posteriormente imprimirlos
  */
 Plantilla.procesarListaCompleta = function () {
-    Plantilla.recuperaTodo(Plantilla.muestraTodo);
+    Plantilla.recupera(Plantilla.muestraTodo, "/plantilla/get_lista_completa");
 }
 
 /**
@@ -305,33 +305,48 @@ Plantilla.muestraTodo = function (vector) {
     msj += Plantilla.plantillaTablaJugadores.footer
 
     // Borrar toda la información del Article y la sustituyo por la que ma interesa
-    Frontend.Article.actualizar("Plantilla del listado de los nombres de todos los jugadores de balonmano", msj)
+    Frontend.Article.actualizar("Plantilla del listado de todos los datos de los jugadores de balonmano", msj)
 }
 
 
 /**
- * Función que recuperar todos los pilotos llamando al MS Plantilla
- * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ * Función principal para mostrar ordenados por nombretodos los datos de los jugadores de balonmano desde el MS, y posteriormente imprimirlos
  */
+Plantilla.procesarListaOrdenada = function () {
+    Plantilla.recupera(Plantilla.muestraOrdenado, "/plantilla/get_lista_ordenada");
+}
 
-Plantilla.recuperaTodo = async function (callBackFn) {
-    let response = null
 
-    // Intento conectar con el microservicio
-    try {
-        const url = Frontend.API_GATEWAY + "/plantilla/get_lista_completa"
-        response = await fetch(url)
-
-    } catch (error) {
-        alert("Error: No se han podido acceder al API Gateway")
-        console.error(error)
-        //throw error
+/**
+ * Función para mostrar todos los datos de los jugadores de balonmano
+ * que se recuperan de la BBDD
+ * @param {vector_players} vector
+ */
+Plantilla.muestraOrdenado = function (vector) {
+    // Compongo el contenido que se va a mostrar dentro de la tabla
+    let msj = Plantilla.plantillaTablaJugadores.headerTodosDatos
+    if (vector && Array.isArray(vector)) {
+        Plantilla.ordena(vector)
+        vector.forEach(e => msj += Plantilla.plantillaTablaJugadores.actualizaTodo(e));
     }
+    msj += Plantilla.plantillaTablaJugadores.footer
 
-    // Muestro todos los jugadores de balonmano que se han descargado
-    let vectorPlayers = null
-    if (response) {
-        vectorPlayers  = await response.json()
-        callBackFn(vectorPlayers.data)
-    }
+    // Borrar toda la información del Article y la sustituyo por la que ma interesa
+    Frontend.Article.actualizar("Plantilla del listado de los datos de todos los jugadores de balonmano ordenados alfabeticamente", msj)
+}
+
+
+
+Plantilla.ordena = function(vector){
+    vector.sort(function (min, max) {
+        let nameMin = min.data.name.toUpperCase(); // convertir a mayúsculas para evitar problemas de ordenamiento
+        let nameMax = max.data.name.toUpperCase(); // convertir a mayúsculas para evitar problemas de ordenamiento
+        if (nameMin < nameMax) {
+            return -1;
+        }
+        if (nameMin > nameMax) {
+            return 1;
+        }
+        return 0;
+    });
 }
