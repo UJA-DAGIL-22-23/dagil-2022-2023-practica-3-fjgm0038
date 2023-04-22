@@ -59,11 +59,24 @@ router.get("/get_lista_jugadores", async (req, res) => {
 
 
 /**
- * Listado de nombres de jugadores
+ * Listado completo de jugadores
  */
 router.get("/get_lista_completa", async (req, res) => {
     try {
         await callbacks.get_lista_completa(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+
+/**
+ * Listado de nombres de jugadores
+ */
+router.get("/get_lista_ordenada", async (req, res) => {
+    try {
+        await callbacks.get_lista_ordenada(req, res)
     } catch (error) {
         console.log(error);
     }
