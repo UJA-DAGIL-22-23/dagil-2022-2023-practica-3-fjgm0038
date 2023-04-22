@@ -33,7 +33,7 @@ Plantilla.datosJugadoresNulos = {
 
 // Plantilla de tags
 Plantilla.plantillaTags = {
-
+    "ID": "### ID ###",
     "PLAYERID": "### PLAYERID ###",
     "NAME": "### NAME ###",
     "SURNAME": "### SURNAME ###",
@@ -140,17 +140,43 @@ Plantilla.plantillaTablaJugadores.headerNombres = `<table width="100%" class="li
 <thead>
     <th width="5%">ID</th>
     <th width="15%">Nombre</th>
-    <th width="15%">Apellido</th>
+    <th width="15%">Apellidos</th>
 </thead>
 <tbody>`;
 
-
+// Cabecera de la tabla para solo los nombres
+Plantilla.plantillaTablaJugadores.headerTodosDatos = `<table width="100%" class="listado_jugadores_completo">
+<thead>
+    <th width="5%">ID</th>
+    <th width="10%">Nombre</th>
+    <th width="10%">Apellidos</th>
+    <th width="10%">Fecha de Nacimiento</th>
+    <th width="20%">Temporadas Jugadas</th>
+    <th width="20%">Goles por Temporada</th>
+    <th width="10%">Descalificado</th>
+</thead>
+<tbody>`;
 //Elementos RT que muestra los datos de un jugador de balonmano
 Plantilla.plantillaTablaJugadores.cuerpoNombres = `
 <tr title="${Plantilla.plantillaTags.NAME}">
     <td>${Plantilla.plantillaTags.PLAYERID}</td>
     <td>${Plantilla.plantillaTags.NAME}</td>
     <td>${Plantilla.plantillaTags.SURNAME}</td>
+    <td>
+    <div></div>
+</td>
+</tr>`;
+
+//Elementos RT que muestra los datos de un jugador de balonmano
+Plantilla.plantillaTablaJugadores.cuerpoCompleto = `
+<tr title="${Plantilla.plantillaTags.NAME}">
+    <td>${Plantilla.plantillaTags.PLAYERID}</td>
+    <td>${Plantilla.plantillaTags.NAME}</td>
+    <td>${Plantilla.plantillaTags.SURNAME}</td>
+    <td>${Plantilla.plantillaTags.DATE_BIRTH}</td>
+    <td>${Plantilla.plantillaTags["SEASONS_PLAYED"]}</td>
+    <td>${Plantilla.plantillaTags["GOAL_SEASON"]}</td>
+    <td>${Plantilla.plantillaTags.DISQUALIFIED}</td>
     <td>
     <div></div>
 </td>
@@ -171,9 +197,15 @@ Plantilla.plantillaTablaJugadores.footer = `</tbody>
  */
 Plantilla.sustituyeTags = function (plantilla, player) {
     return plantilla
+        .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), player.ref['@ref'].id)
         .replace(new RegExp(Plantilla.plantillaTags.PLAYERID, 'g'), player.data.playerId)
         .replace(new RegExp(Plantilla.plantillaTags.NAME, 'g'), player.data.name)
         .replace(new RegExp(Plantilla.plantillaTags.SURNAME, 'g'), player.data.surname)
+        .replace(new RegExp(Plantilla.plantillaTags.DATE_BIRTH, 'g'), player.data.dateBirth.day + "/" + player.data.dateBirth.month +
+        "/" + player.data.dateBirth.year)
+        .replace(new RegExp(Plantilla.plantillaTags["SEASONS_PLAYED"], 'g'), player.data.seasonsPlayed)
+        .replace(new RegExp(Plantilla.plantillaTags["GOAL_SEASON"], 'g'), player.data.goalSeason)
+        .replace(new RegExp(Plantilla.plantillaTags.DISQUALIFIED, 'g'), player.data.disqualified)
 }
 
 
@@ -187,6 +219,14 @@ Plantilla.plantillaTablaJugadores.actualizaNombres = function (player) {
     return Plantilla.sustituyeTags(this.cuerpoNombres, player)
 }
 
+/**
+ * Actualiza el cuerpo de la tabla con los datos del jugador de balonmano que se le pasa
+ * @param {player} player Objeto con los datos de la persona que queremos escribir el TR
+ * @returns La plantilla de cuerpo de la tabla con los datos actualizados
+ */
+Plantilla.plantillaTablaJugadores.actualizaTodo = function (player) {
+    return Plantilla.sustituyeTags(this.cuerpoCompleto, player)
+}
 
 
 /**
@@ -244,3 +284,54 @@ Plantilla.procesarListaNombres = function () {
     Plantilla.recupera(Plantilla.muestraSoloNombres);
 }
 
+/**
+ * Función principal para recuperar todos los datos de los jugadores de balonmano desde el MS, y posteriormente imprimirlos
+ */
+Plantilla.procesarListaCompleta = function () {
+    Plantilla.recuperaTodo(Plantilla.muestraTodo);
+}
+
+/**
+ * Función para mostrar todos los datos de los jugadores de balonmano
+ * que se recuperan de la BBDD
+ * @param {vector_players} vector
+ */
+Plantilla.muestraTodo = function (vector) {
+    // Compongo el contenido que se va a mostrar dentro de la tabla
+    let msj = Plantilla.plantillaTablaJugadores.headerTodosDatos
+    if (vector && Array.isArray(vector)) {
+        vector.forEach(e => msj += Plantilla.plantillaTablaJugadores.actualizaTodo(e));
+    }
+    msj += Plantilla.plantillaTablaJugadores.footer
+
+    // Borrar toda la información del Article y la sustituyo por la que ma interesa
+    Frontend.Article.actualizar("Plantilla del listado de los nombres de todos los jugadores de balonmano", msj)
+}
+
+
+/**
+ * Función que recuperar todos los pilotos llamando al MS Plantilla
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */
+
+Plantilla.recuperaTodo = async function (callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio
+    try {
+        const url = Frontend.API_GATEWAY + "/plantilla/get_lista_completa"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los jugadores de balonmano que se han descargado
+    let vectorPlayers = null
+    if (response) {
+        vectorPlayers  = await response.json()
+        callBackFn(vectorPlayers.data)
+    }
+}
