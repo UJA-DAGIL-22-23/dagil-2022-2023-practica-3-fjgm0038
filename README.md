@@ -445,4 +445,17 @@ Tablero Trello: https://trello.com/b/19gtZmF1
 
 ![Captura Home Fauna](./assets/img/faunaHome.png)
 ![Captura Coleccion Fauna](./assets/img/faunaColeccion.png)
-![Captura Balonmano Fauna](./assets/img/faunaColeccion.png)
+![Captura Balonmano Fauna](./assets/img/faunaBalonmano.png)
+
+### Primer Incremento
+Añadida conexión con la base de datos y la sección Acerca De
+![Captura_Trello_Ini_1](./assets/img/trelloIt1_init.png)
+![Captura_AcercaDe](./assets/img/it1_AcercaDe.png)
+![Captura_Trello_Fin_1](./assets/img/trelloIt1_fin.png)
+
+### Segundo Incremento
+Añadida la funcionalidad para ver una lista con los nombres de todos
+los jugadores
+![Captura_Trello_Ini_2](./assets/img/trelloIt2_init.png)
+![Captura_ListaNombres](./assets/img/it2_listadoTodosNombres.png)
+![Captura_Trello_Fin_2](./assets/img/trelloIt2_fin.png)
