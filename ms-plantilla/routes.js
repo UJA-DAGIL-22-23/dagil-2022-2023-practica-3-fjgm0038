@@ -47,7 +47,7 @@ router.get("/test_db", async (req, res) => {
 });
 
 /**
- * Test de conexión a la BBDD
+ * Listado de nombres de jugadores
  */
 router.get("/get_lista_jugadores", async (req, res) => {
     try {
@@ -57,5 +57,16 @@ router.get("/get_lista_jugadores", async (req, res) => {
     }
 });
 
+
+/**
+ * Listado de nombres de jugadores
+ */
+router.get("/get_lista_completa", async (req, res) => {
+    try {
+        await callbacks.get_lista_completa(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
 // Exporto el módulo para poder usarlo en server
 module.exports = router;
