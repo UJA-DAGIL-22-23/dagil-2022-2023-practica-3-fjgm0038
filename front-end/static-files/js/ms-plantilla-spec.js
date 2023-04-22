@@ -111,6 +111,8 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
             expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
+
+
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
             Plantilla.mostrarAcercaDe(datosDescargadosPrueba)
@@ -121,8 +123,32 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
             expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.email) >= 0).toBeTrue()
             expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.fecha) >= 0).toBeTrue()
         })
+
+
 })
 
+describe("Plantilla.ordena: ", function () {
+
+    it("ordena correctamente un vector",
+        function () {
+            vector = [
+                {data: {name: 'Arno'}},
+                {data: {name: 'Admes'}},
+                {data: {name: 'Sobunar'}},
+                {data: {name: 'Cairbre'}},
+            ];
+
+            vectorOrdenado = [
+                {data: {name: 'Admes'}},
+                {data: {name: 'Arno'}},
+                {data: {name: 'Cairbre'}},
+                {data: {name: 'Sobunar'}},
+            ];
+
+            Plantilla.ordena(vector)
+            expect(vector).toEqual(vectorOrdenado)
+        })
+}
 
 /*
 IMPORTANTE
