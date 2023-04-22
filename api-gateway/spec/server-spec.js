@@ -112,6 +112,20 @@ describe('API Gateway: rutas estáticas', () => {
         });
 
     })
+
+
+
+    describe('Acceso a la lista de todos los elementos ordenados:', () => {
+        it('Devuelve Admes al consultar el primer elemento de la lista', (done) => {
+            supertest(app)
+                .get('/plantilla/get_lista_ordenada')
+                .expect(200)
+                .expect('Content-Type', /json/)
+                .end((error) => { error ? done.fail(error) : done(); }
+                );
+        });
+
+    })
 });
 
 
