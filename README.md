@@ -459,3 +459,8 @@ los jugadores
 ![Captura_Trello_Ini_2](./assets/img/trelloIt2_init.png)
 ![Captura_ListaNombres](./assets/img/it2_listadoTodosNombres.png)
 ![Captura_Trello_Fin_2](./assets/img/trelloIt2_fin.png)
+
+### Tercer Incremento
+Añadida funcionalidad para ver un listado con todos los datos de los jugadores
+![Captura_Trello_Ini_3](./assets/img/trelloIt3_init.png)
+![Captura_ListaCompleta](./assets/img/it3_listadoTodosDatos.png)
