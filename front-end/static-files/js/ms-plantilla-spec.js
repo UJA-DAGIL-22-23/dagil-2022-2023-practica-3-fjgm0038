@@ -157,14 +157,27 @@ describe("Plantilla.muestraSoloNombres: ", function() {
             expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de los nombres de todos los jugadores de balonmano")
             expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
         })
+
+    it("Mostrar datos nulos cuando le pasamos un valor que no es un objeto",
+        function() {
+            Plantilla.muestraSoloNombres(10)
+            expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de los nombres de todos los jugadores de balonmano")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
 })
 
 
 
-describe("Plantilla.muestraSoloNombres: ", function() {
+describe("Plantilla.muestraTodo: ", function() {
     it("Mostrar datos nulos cuando le pasamos vector nulo",
         function() {
             Plantilla.muestraTodo([])
+            expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de todos los datos de los jugadores de balonmano")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+    it("Mostrar datos nulos cuando le pasamos un valor que no es un objeto",
+        function() {
+            Plantilla.muestraTodo(10)
             expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de todos los datos de los jugadores de balonmano")
             expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
         })
@@ -175,6 +188,12 @@ describe("Plantilla.muestraOrdenado: ", function() {
     it("Mostrar datos nulos cuando le pasamos vector nulo",
         function() {
             Plantilla.muestraOrdenado([])
+            expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de los datos de todos los jugadores de balonmano ordenados alfabeticamente")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+    it("Mostrar datos nulos cuando le pasamos un valor que no es un objeto",
+        function() {
+            Plantilla.muestraOrdenado(10)
             expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de los datos de todos los jugadores de balonmano ordenados alfabeticamente")
             expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
         })
