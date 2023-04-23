@@ -93,5 +93,16 @@ router.get("/get_busqueda_nombre", async (req, res) => {
         console.log(error);
     }
 });
+
+/**
+ * Busqueda por criterios de jugador
+ */
+router.get("/get_busqueda_criterios", async (req, res) => {
+    try {
+        await callbacks.get_lista_ordenada(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
 // Exporto el módulo para poder usarlo en server
 module.exports = router;

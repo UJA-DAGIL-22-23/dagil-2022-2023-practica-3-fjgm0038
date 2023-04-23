@@ -171,11 +171,33 @@ const CB_OTHERS = {
 
 
     /**
-     * Método para obtener todos los jugadores de balonmano de la BBDD ordenados.
+     * Método para obtener todos los jugadores de balonmano con cierto nombre.
      * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL
      * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
      */
     get_busqueda_nombre: async (req, res) => {
+        try {
+            let players = await client.query(
+                q.Map(
+                    q.Paginate(q.Documents(q.Collection(COLLECTION))),
+                    q.Lambda("X", q.Get(q.Var("X")))
+                )
+            )
+            // console.log( players ) // Para comprobar qué se ha devuelto en personas
+            CORS(res)
+                .status(200)
+                .json(players)
+        } catch (error) {
+            CORS(res).status(500).json({ error: error.description })
+        }
+    },
+
+    /**
+     * Método para obtener todos los jugadores de balonmano con cierto nombre.
+     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL
+     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
+     */
+    get_busqueda_criterios: async (req, res) => {
         try {
             let players = await client.query(
                 q.Map(
