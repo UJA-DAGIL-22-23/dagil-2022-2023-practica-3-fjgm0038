@@ -403,3 +403,42 @@ Plantilla.recuperaDato = async function (callBackFn, nombre, direccion) {
     }
 }
 
+Plantilla.BuscaCriterios = function(criterio1, criterio2, criterio3, modo){
+    Plantilla.recuperaDatoCriterios(Plantilla.muestraTodo, criterio1, criterio2, criterio3, modo, "/plantilla/get_busqueda_criterios");
+}
+
+Plantilla.recuperaDatoCriterios = async function(callBackFn, criterio1, criterio2, criterio3, modo, direccion){
+    let response = null
+
+    // Intento conectar con el microservicio
+    try {
+        const url = Frontend.API_GATEWAY + direccion
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los jugadores de balonmano que se han descargado
+    let vectorPlayers = null
+    if (response) {
+        vectorPlayers  = await response.json()
+        if(criterio3 == "true"){
+            criterio3 = true
+        }else{
+            criterio3 = false
+        }
+        if(modo){
+            const filtro = vectorPlayers.data.filter(player => player.data.surname === criterio1 || player.data.dateBirth.day + "/" + player.data.dateBirth.month +
+                "/" + player.data.dateBirth.year === criterio2 || player.data.disqualified === criterio3)
+            callBackFn(filtro)
+        }else{
+            const filtro = vectorPlayers.data.filter(player => player.data.surname === criterio1 && player.data.dateBirth.day + "/" + player.data.dateBirth.month +
+                "/" + player.data.dateBirth.year === criterio2 && player.data.disqualified === criterio3)
+            callBackFn(filtro)
+        }
+    }
+
+}
