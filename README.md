@@ -448,19 +448,22 @@ Tablero Trello: https://trello.com/b/19gtZmF1
 ![Captura Balonmano Fauna](./assets/img/faunaBalonmano.png)
 
 ### Primer Incremento
-Añadida conexión con la base de datos y la sección Acerca De
+Añadida conexión con la base de datos y la sección Acerca De.  
 ![Captura_Trello_Ini_1](./assets/img/trelloIt1_init.png)
 ![Captura_AcercaDe](./assets/img/it1_AcercaDe.png)
 ![Captura_Trello_Fin_1](./assets/img/trelloIt1_fin.png)
 
 ### Segundo Incremento
 Añadida la funcionalidad para ver una lista con los nombres de todos
-los jugadores
+los jugadores.  
 ![Captura_Trello_Ini_2](./assets/img/trelloIt2_init.png)
 ![Captura_ListaNombres](./assets/img/it2_listadoTodosNombres.png)
 ![Captura_Trello_Fin_2](./assets/img/trelloIt2_fin.png)
 
 ### Tercer Incremento
-Añadida funcionalidad para ver un listado con todos los datos de los jugadores
+Añadida funcionalidad para ver un listado con todos los datos de los jugadores.  
+Añadida funcionalidad para ver un listado con todos los datos de los jugadores ordenado alfabéticamente.
 ![Captura_Trello_Ini_3](./assets/img/trelloIt3_init.png)
 ![Captura_ListaCompleta](./assets/img/it3_listadoTodosDatos.png)
+![Captura_ListaOrdenAlfabético](./assets/img/it3_listadoOrdenAlfabético.png)
+![Captura_Trello_Fin_3](./assets/img/trelloIt3_fin.png)
