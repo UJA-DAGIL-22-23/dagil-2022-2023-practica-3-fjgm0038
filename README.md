@@ -451,7 +451,7 @@ Tablero Trello: https://trello.com/b/19gtZmF1
 ### Primer Incremento
 Añadida conexión con la base de datos y la sección Acerca De.  
 ![Captura_Trello_Ini_1](./assets/img/trelloIt1_init.png)
-![Captura_AcercaDe](./assets/img/it1_AcercaDe.png)
+![Captura_AcercaDe](./assets/img/it1_acercaDe.png)
 ![Captura_Trello_Fin_1](./assets/img/trelloIt1_fin.png)
 
 ### Segundo Incremento
