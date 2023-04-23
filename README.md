@@ -470,4 +470,7 @@ Añadida funcionalidad para ver un listado con todos los datos de los jugadores 
 
 ### Cuarto Incremento
 ![Captura_Trello_Ini_4](./assets/img/trelloIt4_init.png)
-![Captura_ListaCompleta](./assets/img/it4_busquedaNombre.png)
+![Captura_BusquedaNombre](./assets/img/it4_busquedaNombre.png)
+![Captura_BusquedaAND](./assets/img/it4_busquedaAND.png)
+![Captura_BusquedaOR](./assets/img/it4_busquedaOR.png)
+![Captura_Trello_Fin_4](./assets/img/trelloIt4_fin.png)
