@@ -470,6 +470,8 @@ Añadida funcionalidad para ver un listado con todos los datos de los jugadores 
 ![Captura_Trello_Fin_3](./assets/img/trelloIt3_fin.png)
 
 ### Cuarto Incremento
+Añadidas funcionalidades de búsqueda por nombre y tanto incluyente como excluyente
+de apellidos, fecha de nacimiento y descalificado
 ![Captura_Trello_Ini_4](./assets/img/trelloIt4_init.png)
 ![Captura_BusquedaNombre](./assets/img/it4_busquedaNombre.png)
 ![Captura_BusquedaAND](./assets/img/it4_busquedaAND.png)
