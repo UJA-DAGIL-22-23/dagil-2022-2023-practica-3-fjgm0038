@@ -31,6 +31,8 @@ Plantilla.datosJugadoresNulos = {
     disqualified: "undefined"
 }
 
+
+
 // Plantilla de tags
 Plantilla.plantillaTags = {
     "ID": "### ID ###",
@@ -44,10 +46,12 @@ Plantilla.plantillaTags = {
 }
 
 
+
 /**
  * Función que descarga la info MS Plantilla al llamar a una de sus rutas
  * @param {string} ruta Ruta a descargar
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ *
  */
 Plantilla.descargarRuta = async function (ruta, callBackFn) {
     let response = null
@@ -156,6 +160,8 @@ Plantilla.plantillaTablaJugadores.headerTodosDatos = `<table width="100%" class=
     <th width="10%">Descalificado</th>
 </thead>
 <tbody>`;
+
+
 //Elementos RT que muestra los datos de un jugador de balonmano
 Plantilla.plantillaTablaJugadores.cuerpoNombres = `
 <tr title="${Plantilla.plantillaTags.NAME}">
@@ -166,6 +172,8 @@ Plantilla.plantillaTablaJugadores.cuerpoNombres = `
     <div></div>
 </td>
 </tr>`;
+
+
 
 //Elementos RT que muestra los datos de un jugador de balonmano
 Plantilla.plantillaTablaJugadores.cuerpoCompleto = `
@@ -189,11 +197,13 @@ Plantilla.plantillaTablaJugadores.footer = `</tbody>
 `;
 
 
+
 /**
  * Actualiza el cuerpo de la plantilla deseada con los datos de los jugadores de balonmano que se le pasa
  * @param {String} plantilla Cadena conteniendo HTML en la que se desea cambiar lso campos de la plantilla por datos
  * @param {Plantilla} player Objeto con los datos del jugador que queremos escribir en el TR
  * @returns La plantilla del cuerpo de la tabla con los datos actualizados
+ * TODO TDD
  */
 Plantilla.sustituyeTags = function (plantilla, player) {
     return plantilla
@@ -214,6 +224,7 @@ Plantilla.sustituyeTags = function (plantilla, player) {
  * Actualiza el cuerpo de la tabla con los datos del jugador de balonmano que se le pasa
  * @param {player} player Objeto con los datos de la persona que queremos escribir el TR
  * @returns La plantilla de cuerpo de la tabla con los datos actualizados
+ * TODO TDD
  */
 Plantilla.plantillaTablaJugadores.actualizaNombres = function (player) {
     return Plantilla.sustituyeTags(this.cuerpoNombres, player)
@@ -223,6 +234,7 @@ Plantilla.plantillaTablaJugadores.actualizaNombres = function (player) {
  * Actualiza el cuerpo de la tabla con los datos del jugador de balonmano que se le pasa
  * @param {player} player Objeto con los datos de la persona que queremos escribir el TR
  * @returns La plantilla de cuerpo de la tabla con los datos actualizados
+ * TODO TDD
  */
 Plantilla.plantillaTablaJugadores.actualizaTodo = function (player) {
     return Plantilla.sustituyeTags(this.cuerpoCompleto, player)
@@ -230,8 +242,9 @@ Plantilla.plantillaTablaJugadores.actualizaTodo = function (player) {
 
 
 /**
- * Función que recuperar todos los pilotos llamando al MS Plantilla
+ * Función que recuperar todos los jugadores llamando al MS Plantilla
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ *
  */
 
 Plantilla.recupera = async function (callBackFn, direccion) {
@@ -262,6 +275,7 @@ Plantilla.recupera = async function (callBackFn, direccion) {
  * Función para mostrar el id, nombre y apellido de los jugadores de balonmano
  * que se recuperan de la BBDD
  * @param {vector_players} vector
+ * TODO TDD
  */
 Plantilla.muestraSoloNombres = function (vector) {
     // Compongo el contenido que se va a mostrar dentro de la tabla
@@ -295,6 +309,7 @@ Plantilla.procesarListaCompleta = function () {
  * Función para mostrar todos los datos de los jugadores de balonmano
  * que se recuperan de la BBDD
  * @param {vector_players} vector
+ * TODO TDD
  */
 Plantilla.muestraTodo = function (vector) {
     // Compongo el contenido que se va a mostrar dentro de la tabla
@@ -317,10 +332,12 @@ Plantilla.procesarListaOrdenada = function () {
 }
 
 
+
 /**
  * Función para mostrar todos los datos de los jugadores de balonmano
  * que se recuperan de la BBDD
  * @param {vector_players} vector
+ * TODO TDD
  */
 Plantilla.muestraOrdenado = function (vector) {
     // Compongo el contenido que se va a mostrar dentro de la tabla
@@ -336,7 +353,10 @@ Plantilla.muestraOrdenado = function (vector) {
 }
 
 
-
+/**
+ * Función que ordena un vector según el nombre
+ * TODO TDD
+ * */
 Plantilla.ordena = function(vector){
     vector.sort(function (min, max) {
         let nameMin = min.data.name.toUpperCase(); // convertir a mayúsculas para evitar problemas de ordenamiento
@@ -350,3 +370,36 @@ Plantilla.ordena = function(vector){
         return 0;
     });
 }
+
+/** Funcion para buscar jugadores con un cierto nombre
+ *
+ * */
+Plantilla.busquedaNombre = function(nombre){
+    Plantilla.recuperaDato(Plantilla.muestraTodo, nombre, "/plantilla/get_busqueda_nombre");
+}
+
+/**Función que recuperar todos los jugadores con cierto nombre
+ @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.*/
+Plantilla.recuperaDato = async function (callBackFn, nombre, direccion) {
+    let response = null
+
+    // Intento conectar con el microservicio
+    try {
+        const url = Frontend.API_GATEWAY + direccion
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los jugadores de balonmano que se han descargado
+    let vectorPlayers = null
+    if (response) {
+        vectorPlayers  = await response.json()
+        const filtro = vectorPlayers.data.filter(player => player.data.name === nombre)
+        callBackFn(filtro)
+    }
+}
+
