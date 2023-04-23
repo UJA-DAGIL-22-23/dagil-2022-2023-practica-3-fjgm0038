@@ -126,14 +126,14 @@ Plantilla.mostrarAcercaDe = function (datosDescargados) {
  * Función principal para responder al evento de elegir la opción "Home"
  */
 Plantilla.procesarHome = function () {
-    this.descargarRuta("/plantilla/", this.mostrarHome);
+    this.descargarRuta("/balonmano/", this.mostrarHome);
 }
 
 /**
  * Función principal para responder al evento de elegir la opción "Acerca de"
  */
 Plantilla.procesarAcercaDe = function () {
-    this.descargarRuta("/plantilla/acercade", this.mostrarAcercaDe);
+    this.descargarRuta("/balonmano/acercade", this.mostrarAcercaDe);
 }
 
 //Tabla donde irán los jugadores
@@ -295,14 +295,14 @@ Plantilla.muestraSoloNombres = function (vector) {
  * Función principal para recuperar solo los nombres de los jugadores de balonmano desde el MS, y posteriormente imprimirlos
  */
 Plantilla.procesarListaNombres = function () {
-    Plantilla.recupera(Plantilla.muestraSoloNombres, "/plantilla/get_lista_jugadores");
+    Plantilla.recupera(Plantilla.muestraSoloNombres, "/balonmano/get_lista_jugadores");
 }
 
 /**
  * Función principal para recuperar todos los datos de los jugadores de balonmano desde el MS, y posteriormente imprimirlos
  */
 Plantilla.procesarListaCompleta = function () {
-    Plantilla.recupera(Plantilla.muestraTodo, "/plantilla/get_lista_completa");
+    Plantilla.recupera(Plantilla.muestraTodo, "/balonmano/get_lista_completa");
 }
 
 /**
@@ -328,7 +328,7 @@ Plantilla.muestraTodo = function (vector) {
  * Función principal para mostrar ordenados por nombretodos los datos de los jugadores de balonmano desde el MS, y posteriormente imprimirlos
  */
 Plantilla.procesarListaOrdenada = function () {
-    Plantilla.recupera(Plantilla.muestraOrdenado, "/plantilla/get_lista_ordenada");
+    Plantilla.recupera(Plantilla.muestraOrdenado, "/balonmano/get_lista_ordenada");
 }
 
 
@@ -375,7 +375,7 @@ Plantilla.ordena = function(vector){
  *
  * */
 Plantilla.busquedaNombre = function(nombre){
-    Plantilla.recuperaDato(Plantilla.muestraTodo, nombre, "/plantilla/get_busqueda_nombre");
+    Plantilla.recuperaDato(Plantilla.muestraTodo, nombre, "/balonmano/get_busqueda_nombre");
 }
 
 /**Función que recuperar todos los jugadores con cierto nombre
@@ -404,7 +404,7 @@ Plantilla.recuperaDato = async function (callBackFn, nombre, direccion) {
 }
 
 Plantilla.BuscaCriterios = function(criterio1, criterio2, criterio3, modo){
-    Plantilla.recuperaDatoCriterios(Plantilla.muestraTodo, criterio1, criterio2, criterio3, modo, "/plantilla/get_busqueda_criterios");
+    Plantilla.recuperaDatoCriterios(Plantilla.muestraTodo, criterio1, criterio2, criterio3, modo, "/balonmano/get_busqueda_criterios");
 }
 
 Plantilla.recuperaDatoCriterios = async function(callBackFn, criterio1, criterio2, criterio3, modo, direccion){
