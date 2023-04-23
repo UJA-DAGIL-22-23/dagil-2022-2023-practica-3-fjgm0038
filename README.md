@@ -457,6 +457,7 @@ Añadida conexión con la base de datos y la sección Acerca De.
 ### Segundo Incremento
 Añadida la funcionalidad para ver una lista con los nombres de todos
 los jugadores.  
+Al final en este incremento solo he implementado uno de las tres funcionalidades planteados
 ![Captura_Trello_Ini_2](./assets/img/trelloIt2_init.png)
 ![Captura_ListaNombres](./assets/img/it2_listadoTodosNombres.png)
 ![Captura_Trello_Fin_2](./assets/img/trelloIt2_fin.png)
