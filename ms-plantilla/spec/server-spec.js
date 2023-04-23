@@ -116,7 +116,19 @@ describe('Servidor PLANTILLA:', () => {
     })
 
     describe('Acceso a la lista de todos los elementos ordenados:', () => {
-        it('Devuelve Admes al consultar la lista ordenada por nombre', (done) => {
+        it('Accede correctamente a la web', (done) => {
+            supertest(app)
+                .get('/get_lista_ordenada')
+                .expect(200)
+                .expect('Content-Type', /json/)
+                .end((error) => { error ? done.fail(error) : done(); }
+                );
+        });
+
+    })
+
+    describe('Acceso a la busqueda por nombre:', () => {
+        it('Se accede a la busqueda', (done) => {
             supertest(app)
                 .get('/get_lista_ordenada')
                 .expect(200)
