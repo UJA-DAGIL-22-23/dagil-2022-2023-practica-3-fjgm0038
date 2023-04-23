@@ -33,9 +33,18 @@
         <a href="javascript:Plantilla.procesarListaOrdenada()" class="opcion-principal"
            title="Llama a la ruta /get_lista_ordenada del MS Plantilla">Listado Ordenado</a>
 
+        <div>
 
-        <input type="text" id="nombre-buscar">
+        </div>
+        <input type="text" placeholder="Nombre" id="nombre-buscar">
         <button class="btn" onclick="Plantilla.busquedaNombre(document.getElementById('nombre-buscar').value)">Busqueda por Nombre</button>
+        <div></div>
+        <input type="text" placeholder="Apellido" id="criterio-1">
+        <input type="text" placeholder="Nacimiento (dd/mm/aaaa)" id="criterio-2">
+        <input type="text" placeholder="Descalificado"id="criterio-3">
+        <button class="btn" onclick="Plantilla.BuscaCriterios(document.getElementById('criterio-1').value, document.getElementById('criterio-2').value, document.getElementById('criterio-3').value, true)">Buscar algun criterio</button>
+        <button class="btn" onclick="Plantilla.BuscaCriterios(document.getElementById('criterio-1').value, document.getElementById('criterio-2').value, document.getElementById('criterio-3').value, false)">Buscar todos los criterios</button>
+
     </nav>
 
     <!-- 

@@ -15,7 +15,7 @@ describe('API Gateway: rutas estáticas', () => {
   describe('Rutas estáticas de MS Plantilla', () => {
     it('Devuelve MS Plantilla Home Page', (done) => {
       supertest(app)
-        .get('/plantilla/')
+        .get('/balonmano/')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -28,7 +28,7 @@ describe('API Gateway: rutas estáticas', () => {
     });
     it('Devuelve MS Plantilla Acerca De', (done) => {
       supertest(app)
-        .get('/plantilla/acercade')
+        .get('/balonmano/acercade')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -52,7 +52,7 @@ describe('API Gateway: rutas estáticas', () => {
     describe('Acceso a BBDD:', () => {
         it('Devuelve Arno al consultar mediante test_db', (done) => {
             supertest(app)
-                .get('/plantilla/test_db')
+                .get('/balonmano/test_db')
                 .expect(200)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
@@ -73,7 +73,7 @@ describe('API Gateway: rutas estáticas', () => {
     describe('Acceso a la lista de nombres de los jugadores:', () => {
         it('Devuelve Arno al consultar el primer miembro de la lista de jugadores', (done) => {
             supertest(app)
-                .get('/plantilla/get_lista_jugadores')
+                .get('/balonmano/get_lista_jugadores')
                 .expect(200)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
@@ -91,7 +91,7 @@ describe('API Gateway: rutas estáticas', () => {
     describe('Acceso a la lista de todos los datos de los jugadores:', () => {
         it('Devuelve Arno al consultar el primer miembro de la lista de jugadores', (done) => {
             supertest(app)
-                .get('/plantilla/get_lista_completa')
+                .get('/balonmano/get_lista_completa')
                 .expect(200)
                 .expect('Content-Type', /json/)
                 .expect(function (res) {
@@ -118,7 +118,7 @@ describe('API Gateway: rutas estáticas', () => {
     describe('Acceso a la lista de todos los elementos ordenados:', () => {
         it('Se accede a la web', (done) => {
             supertest(app)
-                .get('/plantilla/get_lista_ordenada')
+                .get('/balonmano/get_lista_ordenada')
                 .expect(200)
                 .expect('Content-Type', /json/)
                 .end((error) => { error ? done.fail(error) : done(); }
@@ -130,7 +130,19 @@ describe('API Gateway: rutas estáticas', () => {
     describe('Acceso a la busqueda por nombre:', () => {
         it('Se accede a la busqueda', (done) => {
             supertest(app)
-                .get('/plantilla/get_lista_ordenada')
+                .get('/balonmano/get_busqueda_nombre')
+                .expect(200)
+                .expect('Content-Type', /json/)
+                .end((error) => { error ? done.fail(error) : done(); }
+                );
+        });
+
+    })
+
+    describe('Acceso a la busqueda por nombre:', () => {
+        it('Se accede a la busqueda', (done) => {
+            supertest(app)
+                .get('/balonmano/get_busqueda_criterios')
                 .expect(200)
                 .expect('Content-Type', /json/)
                 .end((error) => { error ? done.fail(error) : done(); }

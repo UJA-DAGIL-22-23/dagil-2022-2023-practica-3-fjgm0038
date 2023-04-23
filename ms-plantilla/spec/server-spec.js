@@ -130,7 +130,19 @@ describe('Servidor PLANTILLA:', () => {
     describe('Acceso a la busqueda por nombre:', () => {
         it('Se accede a la busqueda', (done) => {
             supertest(app)
-                .get('/get_lista_ordenada')
+                .get('/get_busqueda_nombre')
+                .expect(200)
+                .expect('Content-Type', /json/)
+                .end((error) => { error ? done.fail(error) : done(); }
+                );
+        });
+
+    })
+
+    describe('Acceso a la busqueda por nombre:', () => {
+        it('Se accede a la busqueda', (done) => {
+            supertest(app)
+                .get('/get_busqueda_criterios')
                 .expect(200)
                 .expect('Content-Type', /json/)
                 .end((error) => { error ? done.fail(error) : done(); }
