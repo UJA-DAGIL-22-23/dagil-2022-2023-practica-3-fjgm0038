@@ -27,7 +27,15 @@
         <a href="javascript:Plantilla.procesarAcercaDe()" class="opcion-principal"
             title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
         <a href="javascript:Plantilla.procesarListaNombres()" class="opcion-principal"
-           title="Llama a la ruta /muestraSoloNombres del MS Plantilla">Listado de Nombres</a>
+           title="Llama a la ruta /get_lista_jugadores del MS Plantilla">Listado de Nombres</a>
+        <a href="javascript:Plantilla.procesarListaCompleta()" class="opcion-principal"
+           title="Llama a la ruta /get_lista_completa del MS Plantilla">Listado Detallado</a>
+        <a href="javascript:Plantilla.procesarListaOrdenada()" class="opcion-principal"
+           title="Llama a la ruta /get_lista_ordenada del MS Plantilla">Listado Ordenado</a>
+
+
+        <input type="text" id="nombre-buscar">
+        <button class="btn" onclick="Plantilla.busquedaNombre(document.getElementById('nombre-buscar').value)">Busqueda por Nombre</button>
     </nav>
 
     <!-- 

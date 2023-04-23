@@ -111,6 +111,8 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
             expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
+
+
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
             Plantilla.mostrarAcercaDe(datosDescargadosPrueba)
@@ -121,7 +123,64 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
             expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.email) >= 0).toBeTrue()
             expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.fecha) >= 0).toBeTrue()
         })
+
+
 })
+
+describe("Plantilla.ordena: ", function () {
+
+    it("ordena correctamente un vector",
+        function () {
+            vector = [
+                {data: {name: 'Arno'}},
+                {data: {name: 'Admes'}},
+                {data: {name: 'Sobunar'}},
+                {data: {name: 'Cairbre'}},
+            ];
+
+            vectorOrdenado = [
+                {data: {name: 'Admes'}},
+                {data: {name: 'Arno'}},
+                {data: {name: 'Cairbre'}},
+                {data: {name: 'Sobunar'}},
+            ];
+
+            Plantilla.ordena(vector)
+            expect(vector).toEqual(vectorOrdenado)
+        })
+})
+
+describe("Plantilla.muestraSoloNombres: ", function() {
+    it("Mostrar datos nulos cuando le pasamos vector nulo",
+        function() {
+            Plantilla.muestraSoloNombres([])
+            expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de los nombres de todos los jugadores de balonmano")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+})
+
+
+
+describe("Plantilla.muestraSoloNombres: ", function() {
+    it("Mostrar datos nulos cuando le pasamos vector nulo",
+        function() {
+            Plantilla.muestraTodo([])
+            expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de todos los datos de los jugadores de balonmano")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+})
+
+
+describe("Plantilla.muestraOrdenado: ", function() {
+    it("Mostrar datos nulos cuando le pasamos vector nulo",
+        function() {
+            Plantilla.muestraOrdenado([])
+            expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de los datos de todos los jugadores de balonmano ordenados alfabeticamente")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+})
+
+
 
 
 /*
