@@ -150,6 +150,36 @@ describe("Plantilla.ordena: ", function () {
         })
 })
 
+describe("Plantilla.muestraSoloNombres: ", function() {
+    it("Mostrar datos nulos cuando le pasamos vector nulo",
+        function() {
+            Plantilla.muestraSoloNombres([])
+            expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de los nombres de todos los jugadores de balonmano")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+})
+
+
+
+describe("Plantilla.muestraSoloNombres: ", function() {
+    it("Mostrar datos nulos cuando le pasamos vector nulo",
+        function() {
+            Plantilla.muestraTodo([])
+            expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de todos los datos de los jugadores de balonmano")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+})
+
+
+describe("Plantilla.muestraOrdenado: ", function() {
+    it("Mostrar datos nulos cuando le pasamos vector nulo",
+        function() {
+            Plantilla.muestraOrdenado([])
+            expect(elementoTitulo.innerHTML).toBe("Plantilla del listado de los datos de todos los jugadores de balonmano ordenados alfabeticamente")
+            expect(elementoContenido.querySelector('tbody').innerHTML).toBe('')
+        })
+})
+
 
 
 
