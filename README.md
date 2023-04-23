@@ -467,3 +467,7 @@ Añadida funcionalidad para ver un listado con todos los datos de los jugadores 
 ![Captura_ListaCompleta](./assets/img/it3_listadoTodosDatos.png)
 ![Captura_ListaOrdenAlfabético](./assets/img/it3_listadoOrdenAlfabético.png)
 ![Captura_Trello_Fin_3](./assets/img/trelloIt3_fin.png)
+
+### Cuarto Incremento
+![Captura_Trello_Ini_4](./assets/img/trelloIt4_init.png)
+![Captura_ListaCompleta](./assets/img/it4_busquedaNombre.png)
