@@ -148,7 +148,7 @@ describe("Plantilla.ordena: ", function () {
             Plantilla.ordena(vector)
             expect(vector).toEqual(vectorOrdenado)
         })
-}
+})
 
 /*
 IMPORTANTE
